@@ -2,7 +2,11 @@
 const user = useSupabaseUser()
 const { auth } = useSupabaseClient()
 
-const redirectTo = `${widow.location.origin}/confirm`
+const redirectTo = ref('')
+
+onMounted(() => {
+  redirectTo.value = window.location.href
+})
 
 watchEffect(() => {
   if (user.value) {
